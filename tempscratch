@@ -25,3 +25,12 @@ async function connectwallet() {
 	
 }
 				
+
+
+
+
+///index.html
+
+<script src="js/ethers.umd.min.js" ></script>
+		
+<script type="text/javascript" src="js/citadelABI.js"></script>
