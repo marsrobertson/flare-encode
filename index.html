@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello!</title>
+    <meta name="description" content="description"/>
+    <meta name="author" content="author" />
+    <meta name="keywords" content="keywords" />
+    <!-- <link rel="stylesheet" href="./stylesheet.css" type="text/css" /> -->
+    <style type="text/css">.body { width: auto; }</style>
+
+    <script src="js/ethers.umd.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  </head>
+  <body>
+    <button id="connect">Connect wallet</button>
+
+  </body>
+
+  <script>
+
+        const provider = new ethers.BrowserProvider(window.ethereum, "any"); 
+        provider.on("network", (newNetwork, oldNetwork) => { if (oldNetwork) { window.location.reload(); } });
+                    
+        const signer = provider.getSigner();
+
+        async function connectwallet() {
+            ethereum.request({ method: 'eth_requestAccounts' });
+            const signer = await provider.getSigner();  // Explicitly await here
+            const myaddress = await signer.getAddress();
+            console.log(myaddress);
+        }
+
+        $("#connect").click(function() {
+            console.log("button clicked");
+            connectwallet();
+        })
+  </script>
+</html>
