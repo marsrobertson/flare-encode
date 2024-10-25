@@ -1,0 +1,27 @@
+//main js file
+const provider = new ethers.providers.Web3Provider(window.ethereum, "any"); 
+provider.on("network", (newNetwork, oldNetwork) => { if (oldNetwork) { window.location.reload(); } });
+			
+const signer = provider.getSigner();
+
+//const flarogenlabaddress = "0x6E870b52c81e647F97DcFAb186d11fAf95612A9e";
+//const flarogenlab = new ethers.Contract(flarogenlabaddress, flarogenlabABI, signer);
+
+
+
+async function connectwallet() {
+
+	ethereum.request({ method: 'eth_requestAccounts' });
+	
+	var a = setInterval(async function(){ 
+			try {
+					myaddress = await signer.getAddress();
+					await refreshpage();
+					clearInterval(a);
+				}
+			catch{}
+		}, 3000);
+	
+	
+}
+				
